@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppName": {
+      "type": "string"
+    },
+    "workflowName": {
+      "type": "string"
+    }
+  },
+  "resources": [],
+  "outputs": {
+    "callbackUrl": {
+      "value": "[listCallbackUrl(resourceId('Microsoft.Web/sites/hostruntime/webhooks/api/workflows/triggers', parameters('logicAppName'), 'runtime', 'workflow', 'management', parameters('workflowName'), 'manual'),'2021-03-01').value]",
+      "type": "string"
+    },
+    "sig": {
+      "value": "[listCallbackUrl(resourceId('Microsoft.Web/sites/hostruntime/webhooks/api/workflows/triggers', parameters('logicAppName'), 'runtime', 'workflow', 'management', parameters('workflowName'), 'manual'),'2021-03-01').queries['sig']]",
+      "type": "string"
+    }
+  }
+}
