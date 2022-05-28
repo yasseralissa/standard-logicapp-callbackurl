@@ -25,9 +25,12 @@ In consumption logic apps we need only to provide the name of the workflow, but 
 
 Now let's try to get the callback URLs for a consumption logic app and standard logic app workflow in an ARM template:
 
+## Consumption logic app
 ```
 "[listCallbackUrl(resourceId('Microsoft.Logic/workflows/triggers', parameters('workflowName'), 'manual'),'2021-03-01').value]"
 ```
+
+## Standard logic app workflow
 ```
 [listCallbackUrl(resourceId('Microsoft.Web/sites/hostruntime/webhooks/api/workflows/triggers', parameters('logicAppName'), 'runtime', 'workflow', 'management', parameters('workflowName'), 'manual'),'2021-03-01').value]
 ```
